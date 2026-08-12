@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" data-theme="dark">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>~ Alexandre Quintiliano ~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Portfólio de Alexandre Quintiliano — Desenvolvedor Backend e Frontend. Experiências, projetos e contato." />
+    <meta name="author" content="Alexandre Quintiliano" />
+    <meta name="theme-color" content="#080b14" />
+    <title>Alexandre Quintiliano — Desenvolvedor</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
     <!-- Font Awesome icons (free version)-->
@@ -14,579 +16,474 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- Theme CSS-->
     <link href="css/styles.css" rel="stylesheet" />
+    <script>
+        // Aplica o tema salvo antes da pintura para evitar "flash"
+        (function () {
+            var t = localStorage.getItem('theme');
+            if (t) document.documentElement.setAttribute('data-theme', t);
+            // Marca que o JS está ativo (habilita as animações de entrada)
+            document.documentElement.classList.add('js');
+        })();
+    </script>
 </head>
 
 <body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div id="weather-container" class="container justify-content-start">
-            <div class="d-flex align-items-center justify-content-between p-3" id="weather">
-                <img src="assets/img/portfolio/weather.png" class="img-weather" alt="">
-                <div style="margin-top: 10px; color: white; font-size: 10px">
-                    Erro ao obter dados do clima.
-                </div>
-            </div>
-            <div id="xande" style="margin-left: 35px">
-                <img src="assets/img/portfolio/casa.png" style="height: 32px; margin-right: 10px" alt="">
-                <a href="#page-top">Alexandre Quintiliano</a>
-            </div>
-        </div>
+    <!-- Fundo decorativo-->
+    <div class="bg-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- Navegação-->
+    <nav class="nav" id="mainNav">
         <div class="container">
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#experiencias">Experiências</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#games">Games</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#about">Sobre</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#contact">Contato</a></li>
-                </ul>
+            <a class="brand" href="#page-top">
+                <img src="assets/img/portfolio/casa.png" alt="" />
+                <span>Alexandre Quintiliano</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#experiencias">Experiências</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="weather-chip" id="weather" title="Clima na sua localização">
+                    <img src="assets/img/portfolio/weather.png" alt="" />
+                    <div class="weather-text">Clima indisponível</div>
+                </div>
+                <button class="icon-btn" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Abrir menu"
+                    aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5 rounded-pill" src="assets/img/alexandre.jpg" alt="..." />
-            <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Alexandre Quintiliano</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+    <!-- Menu mobile-->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#experiencias">Experiências</a>
+        <a href="#games">Games</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contato</a>
+    </div>
+
+    <!-- Hero-->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                Disponível para novos projetos
             </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Desenvolvedor - Backend - Frontend</p>
+
+            <div class="hero-avatar">
+                <img src="assets/img/alexandre.jpg" alt="Foto de Alexandre Quintiliano" />
+            </div>
+
+            <h1>Olá, eu sou <span class="gradient-text">Alexandre Quintiliano</span></h1>
+
+            <div class="hero-role">
+                <span>Desenvolvedor</span>
+                <span class="dot"></span>
+                <span>Backend</span>
+                <span class="dot"></span>
+                <span>Frontend</span>
+            </div>
+
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="#experiencias">
+                    <i class="fas fa-briefcase"></i>
+                    Ver experiências
+                </a>
+                <a class="btn btn-ghost" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf" target="_blank"
+                    rel="noopener">
+                    <i class="fas fa-download"></i>
+                    Download do CV
+                </a>
+            </div>
+
+            <div class="hero-social">
+                <a href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/" target="_blank" rel="noopener"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/quintiliano95" target="_blank" rel="noopener" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="#contact" aria-label="Contato"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true">
+            <div class="mouse"></div>
+            Role a página
         </div>
     </header>
 
-    <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="experiencias">
+    <!-- Experiências-->
+    <section class="section" id="experiencias">
         <div class="container">
-            <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Experiências</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+            <div class="section-head reveal">
+                <span class="eyebrow">Trajetória</span>
+                <h2>Experiências</h2>
+                <p>Formação e atuação profissional em desenvolvimento de sistemas. Clique em um card para ver os
+                    detalhes.</p>
             </div>
 
-            <!-- Portfolio Grid Items-->
-            <div class="row justify-content-center">
-                <!-- Portfolio Item 1-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/uninter.jpg" alt="..." />
+            <div class="card-grid">
+                <article class="card reveal" data-modal-open="modal-uninter" tabindex="0" role="button">
+                    <div class="card-media logo">
+                        <img src="assets/img/portfolio/uninter.jpg" alt="Faculdade Uninter" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
                     </div>
-                </div>
+                    <div class="card-body">
+                        <h3>Faculdade Uninter</h3>
+                        <p>Análise e Desenvolvimento de Sistemas.</p>
+                        <ul class="card-tags">
+                            <li>Java</li>
+                            <li>Python</li>
+                            <li>React</li>
+                            <li>SQL</li>
+                        </ul>
+                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </article>
 
-                <!-- Portfolio Item -->
-                <div class="col-md-6 col-lg-4 mb-5 d-flex align-items-center justify-content-center">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/a1.jpg" alt="..." />
+                <article class="card reveal" data-modal-open="modal-a1" tabindex="0" role="button">
+                    <div class="card-media logo">
+                        <img src="assets/img/portfolio/a1.jpg" alt="A1 Engenharia" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
                     </div>
-                </div>
+                    <div class="card-body">
+                        <h3>A1 Engenharia</h3>
+                        <p>Desenvolvimento web e ferramentas para engenharia.</p>
+                        <ul class="card-tags">
+                            <li>Django</li>
+                            <li>Flutter</li>
+                            <li>AutoCAD</li>
+                            <li>PHP</li>
+                        </ul>
+                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </article>
 
-                <!-- Portfolio Item 3-->
-                <div class="col-md-6 col-lg-4 mb-5 d-flex align-items-center justify-content-center">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/dettalles.jpeg" alt="..." />
+                <article class="card reveal" data-modal-open="modal-dettalles" tabindex="0" role="button">
+                    <div class="card-media logo">
+                        <img src="assets/img/portfolio/dettalles.jpeg" alt="Dettalles Consultoria" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
                     </div>
-                </div>
-
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mt-5" id="games">GAMES</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Item 4-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/vorfield.jpg" alt="..." />
-                        <div class="col-lg-12 text-center">
-                            <p class="lead">Clique aqui para jogar Volfied</p>
-                        </div>
+                    <div class="card-body">
+                        <h3>Dettalles Consultoria LTDA</h3>
+                        <p>Assistente de Suporte de TI nas rotinas do sistema Protheus.</p>
+                        <ul class="card-tags">
+                            <li>Suporte de TI</li>
+                            <li>Protheus</li>
+                        </ul>
+                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#flappy">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/flappy.jpg" alt="..." />
-                        <div class="col-lg-12 text-center">
-                            <p class="lead">Clique aqui para jogar Flappy Bird</p>
-                        </div>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-
-    <!-- About Section-->
-    <section class="page-section bg-primary text-white mb-0" id="about">
+    <!-- Games-->
+    <section class="section" id="games">
         <div class="container">
-            <!-- About Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">Sobre Mim</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+            <div class="section-head reveal">
+                <span class="eyebrow">Diversão</span>
+                <h2>Games</h2>
+                <p>Uma pausa para jogar direto pelo navegador.</p>
             </div>
-            <!-- About Section Content-->
-            <div class="row">
-                <div class="col-lg-4 ms-auto">
-                    <p class="lead">Meu nome é Alexandre Quintiliano, e sou um profissional apaixonado por tecnologia e
-                        administração. Em 2021, completei minha graduação em Administração pela Faculdade Padre João
-                        Bagozzi, uma instituição que sempre primou pela excelência acadêmica e proporcionou uma base
-                        sólida para o meu desenvolvimento profissional.</p>
-                </div>
-                <div class="col-lg-4 me-auto">
-                    <p class="lead">Atualmente, estou dando continuidade à minha trajetória acadêmica no campo da
-                        tecnologia, cursando o último período de Análise e Desenvolvimento de Sistemas na Universidade
-                        Uninter, com previsão de término em 2026. Essa jornada tem sido enriquecedora, pois tenho a
-                        oportunidade de explorar, adquirir habilidades e conhecimentos valiosos para o mundo
-                        contemporâneo.</p>
-                </div>
+
+            <div class="card-grid games">
+                <article class="card reveal" data-modal-open="modal-volfied" tabindex="0" role="button">
+                    <div class="card-media">
+                        <img src="assets/img/portfolio/vorfield.jpg" alt="Volfied" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Volfied</h3>
+                        <p>Clique aqui para jogar Volfied</p>
+                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </article>
+
+                <article class="card reveal" data-modal-open="modal-flappy" tabindex="0" role="button">
+                    <div class="card-media">
+                        <img src="assets/img/portfolio/flappy.jpg" alt="Flappy Bird" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Flappy Bird</h3>
+                        <p>Clique aqui para jogar Flappy Bird</p>
+                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </article>
             </div>
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+        </div>
+    </section>
+
+    <!-- Sobre-->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Quem sou</span>
+                <h2>Sobre Mim</h2>
+                <p>Um pouco da minha história entre a administração e a tecnologia.</p>
             </div>
-            <div class="row">
-                <div class="col-lg-4 ms-auto">
-                    <p class="lead">Para complementar minha formação e ganhar experiência prática, realizei um estágio
-                        na empresa A1 Engenharia, na qual fui efetivado. Nesse ambiente dinâmico e desafiador, tenho a
-                        oportunidade de aplicar meu conhecimento e, ao mesmo tempo, expandir minhas habilidades em
-                        desenvolvimento de aplicações web. Estive envolvido em projetos que utilizam o framework Django,
-                        o que foi uma experiência gratificante.</p>
+
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <div class="about-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Formação</h3>
+                    <p>Sou o Alexandre! Em 2021 me graduei em
+                        Administração pela Faculdade Padre João Bagozzi, e foi de lá que trouxe algo que uso todos os
+                        dias no código: o hábito de olhar para o processo e entender o problema antes de propor a
+                        solução.</p>
                 </div>
-                <div class="col-lg-4 me-auto">
-                    <p class="lead">Meu compromisso com o aprendizado contínuo e minha paixão por explorar novos
-                        horizontes na tecnologia me motivam diariamente. Acredito que o desenvolvimento de sistemas me
-                        proporcionará uma perspectiva única para enfrentar desafios no mundo dos negócios e da
-                        tecnologia, e estou ansioso para o que o futuro reserva em minha jornada profissional.</p>
+
+                <div class="about-card reveal">
+                    <div class="about-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Tecnologia</h3>
+                    <p>Hoje curso o último período de Análise e Desenvolvimento de Sistemas na Uninter, com conclusão
+                        prevista para 2026. Foi o caminho que escolhi para transformar curiosidade em prática: entender
+                        o que acontece por baixo do capô das aplicações e construir coisas que realmente funcionam no
+                        dia a dia de quem usa.</p>
+                </div>
+
+                <div class="about-card reveal">
+                    <div class="about-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Experiência</h3>
+                    <p>Entrei na A1 Engenharia como estagiário e fui efetivado. Desenvolvi aplicações web com
+                        Django (do banco de dados ao frontend), e criei ferramentas internas que automatizaram o trabalho
+                        da equipe de engenharia.</p>
+                </div>
+
+                <div class="about-card reveal">
+                    <div class="about-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Objetivos</h3>
+                    <p>Aprender sempre foi a parte que mais me motiva. A mistura entre administração e tecnologia me dá
+                        uma perspectiva diferente: consigo enxergar o negócio por trás do requisito, e não só a tarefa.
+                        Estou aberto a novos projetos e desafios que me façam crescer como desenvolvedor.</p>
                 </div>
             </div>
 
-            <!-- About Section Button-->
-            <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf"
-                    target="_blank">
-                    <i class="fas fa-download me-2"></i>
+            <div class="about-cta reveal">
+                <a class="btn btn-primary" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf" target="_blank"
+                    rel="noopener">
+                    <i class="fas fa-download"></i>
                     Download Curriculum Vitae
                 </a>
             </div>
         </div>
     </section>
-    <!-- Contact Section-->
-    <section class="page-section" id="contact">
+
+    <!-- Contato-->
+    <section class="section" id="contact">
         <div class="container">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">CONTATO</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+            <div class="section-head reveal">
+                <span class="eyebrow">Vamos conversar</span>
+                <h2>Contato</h2>
+                <p>Preencha o formulário abaixo e retorno assim que possível.</p>
             </div>
-            <!-- Contact Section Form-->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-7">
-                    <form id="contactForm">
-                        <!-- Name input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Digite seu nome..."
-                                required />
+
+            <div class="contact-wrap reveal">
+                <form id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="field">
+                            <input id="name" type="text" placeholder=" " autocomplete="name" required />
                             <label for="name">Nome Completo</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">Por favor, digite seu nome
-                                completo.</div>
                         </div>
-                        <!-- Email address input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="nome@examplo.com"
-                                required />
+                        <div class="field">
+                            <input id="email" type="email" placeholder=" " autocomplete="email" required />
                             <label for="email">Email</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">Por favor, digite um email.
-                            </div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email é inválido.</div>
                         </div>
-                        <!-- Phone number input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(xx) xxxxx-xxxx" />
-                            <label for="phone">Telefone</label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">Por favor, digite seu
-                                telefone.</div>
-                        </div>
-                        <!-- Message input-->
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" placeholder="Digite sua mensagem aqui..."
-                                style="height: 10rem" required></textarea>
-                            <label for="message">Mensagem</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">Por favor, digite uma
-                                mensagem.</div>
-                        </div>
-                        <!-- Submit Button-->
-                        <button class="btn btn-primary btn-xl" type="button" id="submitButton"
-                            onclick="sendEmail()">Enviar</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="field">
+                        <input id="phone" type="tel" placeholder=" " autocomplete="tel" />
+                        <label for="phone">Telefone</label>
+                    </div>
+                    <div class="field">
+                        <textarea id="message" placeholder=" " required></textarea>
+                        <label for="message">Mensagem</label>
+                    </div>
+                    <div class="form-submit">
+                        <button class="btn btn-primary" type="button" id="submitButton" onclick="sendEmail()">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar mensagem
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
-    <!-- Footer-->
-    <footer class="footer text-center">
+
+    <!-- Rodapé-->
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <!-- Footer Social Icons-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Redes Sociais</h4>
-                    <a class="btn btn-outline-light btn-social mx-1"
-                        href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/" target="_blank"><i
-                            class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/quintiliano95"
-                        target="_blank"><i class="fab fa-fw fa-github"></i></a>
+            <div class="footer-grid">
+                <div>
+                    <h4>Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/" target="_blank"
+                            rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/quintiliano95" target="_blank" rel="noopener"
+                            aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
-                <!-- Footer About Text-->
-                <div class="col-lg-4">
-                    <p class="lead mb-0">
+
+                <div>
+                    <h4>Navegação</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#experiencias">Experiências</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Sobre o site</h4>
+                    <p class="mb-0">
                         Desenvolvido por
-                        <a href="https://github.com/quintiliano95" target="_blank">Alexandre Quintiliano</a>
+                        <a href="https://github.com/quintiliano95" target="_blank" rel="noopener">Alexandre
+                            Quintiliano</a>
                     </p>
                 </div>
             </div>
+
+            <div class="copyright">
+                <small>Copyright &copy; Alexandre Quintiliano</small>
+            </div>
         </div>
     </footer>
-    <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright &copy; Alexandre Quintiliano</small></div>
-    </div>
-    <!-- Portfolio Modals-->
 
-
-    <!-- Portfolio Modal 1-->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">FACULDADE UNINTER
-                                </h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/uninter.jpg" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <div class="col-lg-12 ms-auto">
-                                    <p class="lead">Cursando Análise e Desenvolvimento de Sistemas. A previsão de
-                                        término é para Setembro de 2025.</p>
-                                </div>
-                                <div class="col-lg-12 ms-auto mt-5">
-                                    <p class="lead">No curso já tive contato com as seguintes tecnologias: </p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 ms-auto mb-5">
-                                        <p class="lead"></p>
-                                        <ul class="lead">
-                                            <li>Java</li>
-                                            <li>HTML</li>
-                                            <li>PHP</li>
-                                            <li>CSS</li>
-                                            <li>SQL</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6 ms-auto mb-5">
-                                        <p class="lead"></p>
-                                        <ul class="lead">
-                                            <li>Python (Django)</li>
-                                            <li>Javascript</li>
-                                            <li>React</li>
-                                            <li>Desenvolvimento Mobile</li>
-                                            <li>Figma</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Fechar Janela
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal — Uninter-->
+    <div class="modal" id="modal-uninter" role="dialog" aria-modal="true" aria-labelledby="modal-uninter-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Formação</span>
+            <h2 id="modal-uninter-title">Faculdade Uninter</h2>
+            <img class="modal-img" src="assets/img/portfolio/uninter.jpg" alt="Faculdade Uninter" />
+            <p>Cursando Análise e Desenvolvimento de Sistemas. A previsão de término é para Dezembro de 2026.</p>
+            <p>No curso já tive contato com as seguintes tecnologias:</p>
+            <ul class="tech-chips">
+                <li>Java</li>
+                <li>HTML</li>
+                <li>PHP</li>
+                <li>CSS</li>
+                <li>SQL</li>
+                <li>Python (Django)</li>
+                <li>Javascript</li>
+                <li>React</li>
+                <li>Desenvolvimento Mobile</li>
+                <li>Figma</li>
+            </ul>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" type="button" data-modal-close>
+                    <i class="fas fa-xmark"></i>
+                    Fechar Janela
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Portfolio Modal 2-->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">A1 ENGENHARIA</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-1" src="assets/img/portfolio/a1.jpg" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <div class="col-lg-12 ms-auto">
-                                    <p class="lead">A A1 ENGENHARIA é uma empresa provedora de soluções integradas para
-                                        plantas industriais e geração de energia, na qual pude contribuir nas seguintes
-                                        tarefas: </p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 ms-auto mb-5">
-                                        <p class="lead"></p>
-                                        <ul class="lead">
-                                            <li class="mb-3">Desenvolvimento Web utilizando framework Django (Frontend e
-                                                Backend: HTML, CSS, Javascript, Python)</li>
-                                            <li class="mb-5">Criação de ferramentas para uso na Engenharia</li>
-                                            <li>Manutenção de aplicativos utilizando Flutter.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6 ms-auto mb-5">
-                                        <p class="lead"></p>
-                                        <ul class="lead">
-                                            <li class="mb-5">Automatização de ferramentas do AutoCAD através do Python
-                                            </li>
-                                            <li class="mb-5">Criação e manutenção do Banco de Dados através do DB Models
-                                                Django</li>
-                                            <li>Manutenção em códigos legados PHP.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Fechar Janela
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal — A1 Engenharia-->
+    <div class="modal" id="modal-a1" role="dialog" aria-modal="true" aria-labelledby="modal-a1-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Experiência profissional</span>
+            <h2 id="modal-a1-title">A1 Engenharia</h2>
+            <img class="modal-img" src="assets/img/portfolio/a1.jpg" alt="A1 Engenharia" />
+            <p>A A1 ENGENHARIA é uma empresa provedora de soluções integradas para plantas industriais e geração de
+                energia, na qual pude contribuir nas seguintes tarefas:</p>
+            <div class="modal-columns">
+                <ul class="check-list">
+                    <li>Desenvolvimento Web utilizando framework Django (Frontend e Backend: HTML, CSS, Javascript,
+                        Python)</li>
+                    <li>Criação de ferramentas para uso na Engenharia</li>
+                    <li>Manutenção de aplicativos utilizando Flutter.</li>
+                </ul>
+                <ul class="check-list">
+                    <li>Automatização de ferramentas do AutoCAD através do Python</li>
+                    <li>Criação e manutenção do Banco de Dados através do DB Models Django</li>
+                    <li>Manutenção em códigos legados PHP.</li>
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" type="button" data-modal-close>
+                    <i class="fas fa-xmark"></i>
+                    Fechar Janela
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Portfolio Modal 3-->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">DETTALLES
-                                    CONSULTORIA LTDA</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5 mt-5" src="assets/img/portfolio/dettalles.jpeg"
-                                    alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <div class="col-lg-12 ms-auto mb-5">
-                                    <p class="lead">A Dettalles é uma empresa de consultoria, na qual fui assistente de
-                                        Suporte de TI nas rotinas do sistema Protheus.</p>
-                                </div>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Fechar Janela
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 4-->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4"
-        aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Volfied</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <iframe src="https://archive.org/embed/msdos_Volfied_1991" width="560" height="384"
-                                    webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
-                                <div class="col-lg-12 ms-auto mt-5">
-                                    <p class="lead">Para jogar, basta esperar carregar e pressionar a barra de espaço. O
-                                        objetivo é recortar pelo menos 80% da tela.
-                                        Basta pressionar espaço para ele sair da linha e utilizar as setas para mover a
-                                        nave.
-                                        Procurei colocar ele, pois me traz boas memórias de quando eu era criança e
-                                        jogava este game nas aulas de informática na escola.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal — Dettalles-->
+    <div class="modal" id="modal-dettalles" role="dialog" aria-modal="true" aria-labelledby="modal-dettalles-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Experiência profissional</span>
+            <h2 id="modal-dettalles-title">Dettalles Consultoria LTDA</h2>
+            <img class="modal-img" src="assets/img/portfolio/dettalles.jpeg" alt="Dettalles Consultoria" />
+            <p>A Dettalles é uma empresa de consultoria, na qual fui assistente de Suporte de TI nas rotinas do sistema
+                Protheus.</p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" type="button" data-modal-close>
+                    <i class="fas fa-xmark"></i>
+                    Fechar Janela
+                </button>
             </div>
         </div>
     </div>
 
-    <div class="portfolio-modal modal fade" id="flappy" tabindex="-1" aria-labelledby="flappy" aria-hidden="true"
-        data-bs-backdrop="static">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Flappy Bird</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <div class="responsive-iframe-container">
-                                    <iframe src="https://funhtml5games.com?embed=flappy" frameborder="0" scrolling="no"
-                                        allowfullscreen></iframe>
-                                </div>
-                                <div>
-                                    <p class="lead">Clique com o mouse para fazer o passarinho pular. Para reiniciar,
-                                        basta clicar em cima dele novamente.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal — Volfied-->
+    <div class="modal" id="modal-volfied" role="dialog" aria-modal="true" aria-labelledby="modal-volfied-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Game</span>
+            <h2 id="modal-volfied-title">Volfied</h2>
+            <div class="embed">
+                <iframe data-src="https://archive.org/embed/msdos_Volfied_1991" title="Volfied"
+                    allowfullscreen></iframe>
             </div>
+            <p>Para jogar, basta esperar carregar e pressionar a barra de espaço. O objetivo é recortar pelo menos 80%
+                da tela. Basta pressionar espaço para ele sair da linha e utilizar as setas para mover a nave. Procurei
+                colocar ele, pois me traz boas memórias de quando eu era criança e jogava este game nas aulas de
+                informática na escola.</p>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+    <!-- Modal — Flappy Bird-->
+    <div class="modal" id="modal-flappy" role="dialog" aria-modal="true" aria-labelledby="modal-flappy-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Game</span>
+            <h2 id="modal-flappy-title">Flappy Bird</h2>
+            <div class="embed">
+                <iframe data-src="https://funhtml5games.com?embed=flappy" title="Flappy Bird" scrolling="no"
+                    allowfullscreen></iframe>
+            </div>
+            <p>Clique com o mouse para fazer o passarinho pular. Para reiniciar, basta clicar em cima dele novamente.
+            </p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="js/scripts.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', event => {
-
-            // Navbar shrink function
-            var navbarShrink = function () {
-                const navbarCollapsible = document.body.querySelector('#mainNav');
-                if (!navbarCollapsible) {
-                    return;
-                }
-                if (window.scrollY === 0) {
-                    navbarCollapsible.classList.remove('navbar-shrink')
-                } else {
-                    navbarCollapsible.classList.add('navbar-shrink')
-                }
-
-            };
-
-            // Shrink the navbar
-            navbarShrink();
-
-            // Shrink the navbar when page is scrolled
-            document.addEventListener('scroll', navbarShrink);
-
-            // Activate Bootstrap scrollspy on the main nav element
-            const mainNav = document.body.querySelector('#mainNav');
-            if (mainNav) {
-                new bootstrap.ScrollSpy(document.body, {
-                    target: '#mainNav',
-                    rootMargin: '0px 0px -40%',
-                });
-            }
-
-            // Collapse responsive navbar when toggler is visible
-            const navbarToggler = document.body.querySelector('.navbar-toggler');
-            const responsiveNavItems = [].slice.call(
-                document.querySelectorAll('#navbarResponsive .nav-link')
-            );
-            responsiveNavItems.map(function (responsiveNavItem) {
-                responsiveNavItem.addEventListener('click', () => {
-                    if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                        navbarToggler.click();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
