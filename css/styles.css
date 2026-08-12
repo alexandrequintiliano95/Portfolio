@@ -467,16 +467,24 @@ ul {
     transform: translateY(-2px);
 }
 
-#themeToggle .fa-sun {
+/* O botão mostra o tema que será aplicado no clique */
+#themeToggle .icon-sun {
+    display: block;
+    width: 1.15em;
+    height: 1.15em;
+    color: #f59e0b;
+}
+
+#themeToggle .fa-moon {
     display: none;
 }
 
-[data-theme="light"] #themeToggle .fa-sun {
-    display: inline;
+[data-theme="light"] #themeToggle .icon-sun {
+    display: none;
 }
 
 [data-theme="light"] #themeToggle .fa-moon {
-    display: none;
+    display: block;
 }
 
 .nav-toggle {

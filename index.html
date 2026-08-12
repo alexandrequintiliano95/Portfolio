@@ -61,7 +61,11 @@
                 </div>
                 <button class="icon-btn" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro">
                     <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1" />
+                    </svg>
                 </button>
                 <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Abrir menu"
                     aria-expanded="false">
@@ -152,6 +156,24 @@
                             <li>Python</li>
                             <li>React</li>
                             <li>SQL</li>
+                        </ul>
+                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </article>
+
+                <article class="card reveal" data-modal-open="modal-preambulo" tabindex="0" role="button">
+                    <div class="card-media logo">
+                        <img src="assets/img/portfolio/preambulo.jpg" alt="Preâmbulo Tech" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Preâmbulo Tech</h3>
+                        <p>Desenvolvedor de software backend, com foco em PHP, MySQL e sistemas legados.</p>
+                        <ul class="card-tags">
+                            <li>PHP</li>
+                            <li>MySQL</li>
+                            <li>Legado</li>
+                            <li>Integrações</li>
                         </ul>
                         <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
                     </div>
@@ -388,6 +410,44 @@
                 <li>Desenvolvimento Mobile</li>
                 <li>Figma</li>
             </ul>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" type="button" data-modal-close>
+                    <i class="fas fa-xmark"></i>
+                    Fechar Janela
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal — Preâmbulo Tech-->
+    <div class="modal" id="modal-preambulo" role="dialog" aria-modal="true" aria-labelledby="modal-preambulo-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Experiência profissional</span>
+            <h2 id="modal-preambulo-title">Preâmbulo Tech</h2>
+            <img class="modal-img" src="assets/img/portfolio/preambulo.svg" alt="Preâmbulo Tech" />
+            <p>Desenvolvedor de software · Tempo integral · abr de 2025 a abr de 2026 (1 ano e 1 mês) — Curitiba,
+                Paraná, Brasil.</p>
+            <div class="modal-columns">
+                <ul class="check-list">
+                    <li><strong>Desenvolvimento Backend:</strong> domínio de PHP voltado para a manutenção e evolução de
+                        sistemas complexos, garantindo a estabilidade de rotinas de negócio.</li>
+                    <li><strong>Gestão de Bancos de Dados:</strong> administração de MySQL, atuando na otimização de
+                        consultas, estruturação de tabelas e manutenção de integridade referencial.</li>
+                    <li><strong>Manutenção de Sistemas Legados:</strong> refatoração e suporte a códigos em versões
+                        anteriores (PHP 5.3), aplicando correções de bugs e melhorias de performance sem comprometer a
+                        disponibilidade.</li>
+                </ul>
+                <ul class="check-list">
+                    <li><strong>Integração de Sistemas:</strong> implementação de lógicas de integração e automação de
+                        processos, com foco em tratamento de caracteres especiais e consistência de dados entre
+                        diferentes módulos.</li>
+                    <li><strong>Resolução de Problemas Técnicos:</strong> diagnóstico e mitigação de falhas em produção,
+                        realizando ajustes em campos de tabelas e lógicas de negócio para atender requisitos sistêmicos.
+                    </li>
+                </ul>
+            </div>
             <div class="modal-actions">
                 <button class="btn btn-ghost" type="button" data-modal-close>
                     <i class="fas fa-xmark"></i>
