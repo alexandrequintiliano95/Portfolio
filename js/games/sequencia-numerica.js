@@ -6,11 +6,28 @@
 (function () {
     'use strict';
 
-    // blanks = espaços vazios; start = primeiro número do tabuleiro
+    const sequence = (first, last) => {
+        const list = [];
+        for (let n = first; n <= last; n += 1) list.push(String(n));
+        return list;
+    };
+
+    // labels = peças na ordem correta; o que sobrar de casa vira espaço vazio
     const MODES = {
-        original: { cols: 3, rows: 4, blanks: 2, start: 0 },
-        classico: { cols: 3, rows: 3, blanks: 1, start: 1 },
-        dificil: { cols: 4, rows: 4, blanks: 1, start: 1 }
+        original: { cols: 3, rows: 4, labels: sequence(0, 9).concat('*') },
+        classico: { cols: 3, rows: 3, labels: sequence(1, 8) },
+        dificil: { cols: 4, rows: 4, labels: sequence(1, 15) }
+    };
+
+    // O asterisco da fonte fica pequeno e torto dentro do disco: desenhamos um
+    // no lugar, com as seis hastes saindo do centro.
+    const SYMBOLS = {
+        '*': '<svg class="puzzle-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+            + '<g stroke="currentColor" stroke-width="3" stroke-linecap="round">'
+            + '<line x1="12" y1="3.6" x2="12" y2="20.4" />'
+            + '<line x1="4.73" y1="7.8" x2="19.27" y2="16.2" />'
+            + '<line x1="4.73" y1="16.2" x2="19.27" y2="7.8" />'
+            + '</g></svg>'
     };
 
     const DEFAULT_MODE = 'original';
@@ -40,8 +57,8 @@
 
         let mode = DEFAULT_MODE;
         let config = MODES[mode];
-        let board = [];             // número da peça ou null (espaço vazio)
-        let tiles = new Map();      // número -> elemento
+        let board = [];             // rótulo da peça ou null (espaço vazio)
+        let tiles = new Map();      // rótulo -> elemento
         let cellEls = [];
         let activeBlank = 0;        // espaço usado pelas setas do teclado
         let moves = 0;
@@ -52,13 +69,15 @@
         let visible = false;
 
         const cellCount = () => config.cols * config.rows;
-        const tileCount = () => cellCount() - config.blanks;
+        const tileCount = () => config.labels.length;
         const colOf = index => index % config.cols;
         const rowOf = index => Math.floor(index / config.cols);
+        // O asterisco é lido por extenso pelos leitores de tela
+        const spoken = label => (label === '*' ? 'asterisco' : label);
 
         /* --- Estado --- */
         const isSolved = () => board.every((value, index) => (
-            index < tileCount() ? value === config.start + index : value === null
+            index < tileCount() ? value === config.labels[index] : value === null
         ));
 
         const neighbours = index => {
@@ -237,18 +256,19 @@
             boardEl.appendChild(layer);
 
             tiles.clear();
-            for (let n = 0; n < tileCount(); n += 1) {
-                const label = config.start + n;
+            config.labels.forEach((label, n) => {
+                const symbol = SYMBOLS[label];
                 const tile = document.createElement('button');
                 tile.type = 'button';
-                tile.className = 'puzzle-tile';
+                tile.className = symbol ? 'puzzle-tile symbol' : 'puzzle-tile';
+                tile.dataset.label = label;
                 tile.style.setProperty('--i', n);
-                tile.innerHTML = `<span>${label}</span>`;
+                tile.innerHTML = `<span>${symbol || label}</span>`;
                 // A peça só sai do lugar arrastando (ou pelas setas do teclado)
                 tile.addEventListener('pointerdown', event => startDrag(event, tile, label));
                 tiles.set(label, tile);
                 boardEl.appendChild(tile);
-            }
+            });
         }
 
         function positionTiles() {
@@ -260,7 +280,7 @@
                 tile.style.setProperty('--y', rowOf(index));
                 tile.setAttribute(
                     'aria-label',
-                    `Peça ${label}, linha ${rowOf(index) + 1}, coluna ${colOf(index) + 1}`
+                    `Peça ${spoken(label)}, linha ${rowOf(index) + 1}, coluna ${colOf(index) + 1}`
                 );
             });
             highlightBlank();
@@ -274,7 +294,7 @@
 
         function newGame() {
             board = Array.from({ length: cellCount() }, (unused, index) => (
-                index < tileCount() ? config.start + index : null
+                index < tileCount() ? config.labels[index] : null
             ));
 
             let guard = 0;

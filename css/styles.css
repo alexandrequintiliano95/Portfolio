@@ -1435,6 +1435,15 @@ ul {
     transition: transform 0.18s var(--ease);
 }
 
+/* Asterisco desenhado: as hastes ficam com o mesmo peso e altura dos números */
+.puzzle-symbol {
+    display: block;
+    width: 0.8em;
+    height: 0.8em;
+    fill: none;
+    overflow: visible;
+}
+
 /* Enquanto arrasta, a peça acompanha o dedo/mouse sem animação */
 .puzzle-tile.dragging {
     z-index: 2;
