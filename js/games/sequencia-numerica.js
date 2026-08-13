@@ -14,7 +14,7 @@
 
     // labels = peças na ordem correta; o que sobrar de casa vira espaço vazio
     const MODES = {
-        original: { cols: 3, rows: 4, labels: sequence(0, 9).concat('*') },
+        original: { cols: 3, rows: 4, labels: sequence(1, 9).concat('0', '*') },
         classico: { cols: 3, rows: 3, labels: sequence(1, 8) },
         dificil: { cols: 4, rows: 4, labels: sequence(1, 15) }
     };
@@ -74,6 +74,14 @@
         const rowOf = index => Math.floor(index / config.cols);
         // O asterisco é lido por extenso pelos leitores de tela
         const spoken = label => (label === '*' ? 'asterisco' : label);
+
+        // Quando a sequência não é uma contagem simples, o objetivo vai escrito
+        const goalHint = () => {
+            const ascending = config.labels.every((label, index) => (
+                /^\d+$/.test(label) && (index === 0 || Number(label) > Number(config.labels[index - 1]))
+            ));
+            return ascending ? 'em ordem crescente' : `na ordem ${config.labels.join(' ')}`;
+        };
 
         /* --- Estado --- */
         const isSolved = () => board.every((value, index) => (
@@ -310,7 +318,7 @@
             solved = false;
             stopTimer();
             boardEl.classList.remove('solved');
-            setStatus('Arraste as peças até deixar os números em ordem crescente.');
+            setStatus(`Arraste as peças até deixar o tabuleiro ${goalHint()}.`);
             positionTiles();
             updateStats();
         }
