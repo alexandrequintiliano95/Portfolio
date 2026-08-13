@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             root.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
             const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', next === 'light' ? '#f6f7fb' : '#080b14');
+            if (meta) meta.setAttribute('content', next === 'light' ? '#fbf6f6' : '#0f0708');
         });
     }
 
