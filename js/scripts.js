@@ -209,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('no-scroll');
         const close = modal.querySelector('[data-modal-close]');
         if (close) close.focus();
+        // Avisa os jogos próprios (canvas/DOM) que o modal entrou em cena
+        modal.dispatchEvent(new CustomEvent('modal:open', { bubbles: true }));
     };
 
     const closeModal = modal => {
@@ -217,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove('no-scroll');
         // Descarrega o iframe para parar o jogo/som
         modal.querySelectorAll('iframe[data-src]').forEach(frame => frame.removeAttribute('src'));
+        modal.dispatchEvent(new CustomEvent('modal:close', { bubbles: true }));
         if (lastFocused) lastFocused.focus();
     };
 

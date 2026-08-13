@@ -238,6 +238,18 @@
                     </div>
                 </article>
 
+                <article class="card reveal" data-modal-open="modal-sequencia" tabindex="0" role="button">
+                    <div class="card-media">
+                        <img src="assets/img/portfolio/sequencia.svg" alt="Jogo da sequência numérica" loading="lazy" />
+                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Sequência Numérica</h3>
+                        <p>Clique aqui para jogar o quebra-cabeça deslizante</p>
+                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </article>
+
                 <article class="card reveal" data-modal-open="modal-flappy" tabindex="0" role="button">
                     <div class="card-media">
                         <img src="assets/img/portfolio/flappy.jpg" alt="Flappy Bird" loading="lazy" />
@@ -426,7 +438,7 @@
                     class="fas fa-xmark"></i></button>
             <span class="modal-eyebrow">Experiência profissional</span>
             <h2 id="modal-preambulo-title">Preâmbulo Tech</h2>
-            <img class="modal-img" src="assets/img/portfolio/preambulo.svg" alt="Preâmbulo Tech" />
+            <img class="modal-img" src="assets/img/portfolio/preambulo.jpg" alt="Preâmbulo Tech" />
             <p>Desenvolvedor de software · Tempo integral · abr de 2025 a abr de 2026 (1 ano e 1 mês) — Curitiba,
                 Paraná, Brasil.</p>
             <div class="modal-columns">
@@ -526,6 +538,52 @@
         </div>
     </div>
 
+    <!-- Modal — Sequência Numérica-->
+    <div class="modal" id="modal-sequencia" role="dialog" aria-modal="true" aria-labelledby="modal-sequencia-title">
+        <div class="modal-dialog">
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
+                    class="fas fa-xmark"></i></button>
+            <span class="modal-eyebrow">Game</span>
+            <h2 id="modal-sequencia-title">Sequência Numérica</h2>
+            <p>O tabuleiro começa embaralhado. Arraste as peças pelos espaços vazios até os números ficarem em ordem
+                crescente, da esquerda para a direita e de cima para baixo.</p>
+
+            <div class="puzzle" id="puzzleSequencia" data-puzzle>
+                <div class="puzzle-modes" role="group" aria-label="Tamanho do tabuleiro">
+                    <button type="button" data-puzzle-mode="original" aria-pressed="true">3×4 · 0 a 9</button>
+                    <button type="button" data-puzzle-mode="classico" aria-pressed="false">3×3 · 1 a 8</button>
+                    <button type="button" data-puzzle-mode="dificil" aria-pressed="false">4×4 · 1 a 15</button>
+                </div>
+
+                <div class="puzzle-board" data-puzzle-board role="group" aria-label="Tabuleiro"></div>
+
+                <div class="puzzle-stats">
+                    <span><i class="fas fa-shoe-prints"></i><strong data-puzzle-moves>0</strong> <span
+                            data-puzzle-moves-label>movimentos</span></span>
+                    <span><i class="fas fa-stopwatch"></i><strong data-puzzle-time>00:00</strong></span>
+                    <span data-puzzle-best></span>
+                </div>
+
+                <p class="puzzle-status" data-puzzle-status role="status" aria-live="polite"></p>
+
+                <p class="puzzle-help">Arraste a peça na direção do espaço vazio — vale mouse ou dedo. Pelo teclado, as
+                    setas movem a peça no sentido escolhido; clique num espaço vazio para escolher qual deles as setas
+                    controlam.</p>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary" type="button" data-puzzle-shuffle>
+                    <i class="fas fa-shuffle"></i>
+                    Embaralhar
+                </button>
+                <button class="btn btn-ghost" type="button" data-modal-close>
+                    <i class="fas fa-xmark"></i>
+                    Fechar Janela
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal — Flappy Bird-->
     <div class="modal" id="modal-flappy" role="dialog" aria-modal="true" aria-labelledby="modal-flappy-title">
         <div class="modal-dialog">
@@ -544,6 +602,7 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/games/sequencia-numerica.js"></script>
 </body>
 
 </html>
