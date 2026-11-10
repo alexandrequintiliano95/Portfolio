@@ -1,5 +1,5 @@
 /* ============================================================
-   Jogo da sequência numérica — quebra-cabeça deslizante
+   Jogo da sequência numérica: quebra-cabeça deslizante
    O tabuleiro começa embaralhado e as peças deslizam para os
    espaços vazios até ficarem em ordem crescente.
    ============================================================ */
@@ -107,7 +107,7 @@
             return board[target] === null ? target : -1;
         };
 
-        // Move uma peça por vez para o vizinho vazio — nada de empurrar fileira.
+        // Move uma peça por vez para o vizinho vazio, nada de empurrar fileira.
         const moveTile = (index, target) => {
             board[target] = board[index];
             board[index] = null;
@@ -378,7 +378,7 @@
             if (!bestEl) return;
             const best = readBest();
             bestEl.innerHTML = best
-                ? `<i class="fas fa-trophy"></i> Melhor: ${best.moves} mov · ${formatTime(best.ms)}`
+                ? `Melhor: <strong>${best.moves} mov · ${formatTime(best.ms)}</strong>`
                 : '';
         }
 

@@ -5,20 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Portfólio de Alexandre Quintiliano — Desenvolvedor Backend e Frontend. Experiências, projetos e contato." />
+        content="Portfólio de Alexandre Quintiliano, desenvolvedor backend e frontend. Experiências, projetos e contato." />
     <meta name="author" content="Alexandre Quintiliano" />
-    <meta name="theme-color" content="#0f0708" />
-    <title>Alexandre Quintiliano — Desenvolvedor</title>
+    <meta name="theme-color" content="#0d0708" />
+    <title>Alexandre Quintiliano | Desenvolvedor</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
         rel="stylesheet" />
     <!-- Theme CSS-->
     <link href="css/styles.css" rel="stylesheet" />
@@ -27,53 +25,69 @@
         (function () {
             var t = localStorage.getItem('theme');
             if (t) document.documentElement.setAttribute('data-theme', t);
-            // Marca que o JS está ativo (habilita as animações de entrada)
-            document.documentElement.classList.add('js');
         })();
     </script>
 </head>
 
 <body id="page-top">
-    <!-- Fundo decorativo-->
-    <div class="bg-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div class="bg-grid" aria-hidden="true"></div>
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <!-- Ícones reaproveitados na página-->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+        </symbol>
+        <symbol id="i-out" viewBox="0 0 24 24">
+            <path d="M7 17 17 7M8 7h9v9" />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+            <path d="M6 6l12 12M18 6 6 18" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4.2" />
+            <path
+                d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+            <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+        </symbol>
+        <symbol id="i-erase" viewBox="0 0 24 24">
+            <path d="M9 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6-7 6-7z" />
+            <path d="M12 9.5l5 5M17 9.5l-5 5" />
+        </symbol>
+    </svg>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <!-- Navegação-->
-    <nav class="nav" id="mainNav">
+    <header class="nav" id="mainNav">
         <div class="container">
-            <a class="brand" href="#page-top">
-                <img src="assets/img/portfolio/casa.png" alt="" />
-                <span>Alexandre Quintiliano</span>
-            </a>
+            <a class="brand" href="#page-top">Alexandre Quintiliano</a>
 
-            <ul class="nav-links">
-                <li><a href="#experiencias">Experiências</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
+            <nav aria-label="Seções">
+                <ul class="nav-links">
+                    <li><a href="#experiencias">Experiências</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
 
             <div class="nav-actions">
-                <div class="weather-chip" id="weather" title="Clima na sua localização">
-                    <img src="assets/img/portfolio/weather.png" alt="" />
-                    <div class="weather-text">Clima indisponível</div>
-                </div>
+                <p class="weather" id="weather" title="Clima na sua localização" hidden></p>
                 <button class="icon-btn" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro">
-                    <i class="fas fa-moon"></i>
-                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="12" r="4.2" />
-                        <path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1" />
+                    <svg class="icon icon-sun" aria-hidden="true" focusable="false">
+                        <use href="#i-sun" />
+                    </svg>
+                    <svg class="icon icon-moon" aria-hidden="true" focusable="false">
+                        <use href="#i-moon" />
                     </svg>
                 </button>
                 <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Abrir menu"
-                    aria-expanded="false">
-                    <i class="fas fa-bars"></i>
+                    aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="nav-toggle-bars" aria-hidden="true"></span>
                 </button>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Menu mobile-->
     <div class="mobile-menu" id="mobileMenu">
@@ -83,345 +97,308 @@
         <a href="#contact">Contato</a>
     </div>
 
-    <!-- Hero-->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-badge">
-                <span class="status-dot"></span>
-                Disponível para novos projetos
+    <main id="conteudo">
+        <!-- Abertura-->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <p class="hero-role">Desenvolvedor backend e frontend</p>
+                    <h1><span>Alexandre</span> <span>Quintiliano</span></h1>
+                    <p class="hero-lead">Desenvolvo sistemas em Curitiba. Hoje estou na Dettalles Consultoria, onde
+                        trabalho com Protheus/ADVPL, Laravel e Vue.js. <strong>Disponível para novos
+                            projetos.</strong></p>
+
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="#experiencias">Ver experiências</a>
+                        <a class="btn btn-ghost" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf"
+                            target="_blank" rel="noopener">Baixar CV</a>
+                    </div>
+
+                    <ul class="link-list">
+                        <li><a class="link" href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/"
+                                target="_blank" rel="noopener">LinkedIn<svg class="icon" aria-hidden="true">
+                                    <use href="#i-out" />
+                                </svg></a></li>
+                        <li><a class="link" href="https://github.com/alexandrequintiliano95" target="_blank"
+                                rel="noopener">GitHub<svg class="icon" aria-hidden="true">
+                                    <use href="#i-out" />
+                                </svg></a></li>
+                        <li><a class="link" href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="hero-photo">
+                    <img src="assets/img/alexandre.jpg" alt="Foto de Alexandre Quintiliano" width="640"
+                        height="640" />
+                </div>
             </div>
+        </section>
 
-            <div class="hero-avatar">
-                <img src="assets/img/alexandre.jpg" alt="Foto de Alexandre Quintiliano" />
+        <!-- Experiências-->
+        <section class="section" id="experiencias">
+            <div class="container section-grid">
+                <header class="section-head">
+                    <h2>Experiências</h2>
+                    <p>Formação e atuação profissional em desenvolvimento de sistemas. Clique em um item para ver os
+                        detalhes.</p>
+                </header>
+
+                <div class="rows">
+                    <article class="row" data-modal-open="modal-dettalles" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="row-main">
+                            <h3>Dettalles Consultoria LTDA</h3>
+                            <p>Desenvolvimento Protheus/ADVPL, integrações financeiras e portal web Laravel.</p>
+                            <ul class="tags">
+                                <li>ADVPL</li>
+                                <li>Protheus</li>
+                                <li>Laravel</li>
+                                <li>Vue.js</li>
+                            </ul>
+                        </div>
+                        <p class="row-meta current">Atual</p>
+                        <svg class="icon row-arrow" aria-hidden="true">
+                            <use href="#i-arrow" />
+                        </svg>
+                    </article>
+
+                    <article class="row" data-modal-open="modal-preambulo" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="row-main">
+                            <h3>Preâmbulo Tech</h3>
+                            <p>Desenvolvedor de software backend, com foco em PHP, MySQL e sistemas legados.</p>
+                            <ul class="tags">
+                                <li>PHP</li>
+                                <li>MySQL</li>
+                                <li>Legado</li>
+                                <li>Integrações</li>
+                            </ul>
+                        </div>
+                        <p class="row-meta">2025 a 2026</p>
+                        <svg class="icon row-arrow" aria-hidden="true">
+                            <use href="#i-arrow" />
+                        </svg>
+                    </article>
+
+                    <article class="row" data-modal-open="modal-a1" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="row-main">
+                            <h3>A1 Engenharia</h3>
+                            <p>Desenvolvimento web e ferramentas para engenharia.</p>
+                            <ul class="tags">
+                                <li>Django</li>
+                                <li>Flutter</li>
+                                <li>AutoCAD</li>
+                                <li>PHP</li>
+                            </ul>
+                        </div>
+                        <svg class="icon row-arrow" aria-hidden="true">
+                            <use href="#i-arrow" />
+                        </svg>
+                    </article>
+
+                    <article class="row" data-modal-open="modal-uninter" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="row-main">
+                            <h3>Faculdade Uninter</h3>
+                            <p>Análise e Desenvolvimento de Sistemas.</p>
+                            <ul class="tags">
+                                <li>Java</li>
+                                <li>Python</li>
+                                <li>React</li>
+                                <li>SQL</li>
+                            </ul>
+                        </div>
+                        <p class="row-meta">Conclusão em 2026</p>
+                        <svg class="icon row-arrow" aria-hidden="true">
+                            <use href="#i-arrow" />
+                        </svg>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <h1>Olá, eu sou <span class="gradient-text">Alexandre Quintiliano</span></h1>
+        <!-- Games-->
+        <section class="section" id="games">
+            <div class="container section-grid">
+                <header class="section-head">
+                    <h2>Games</h2>
+                    <p>Uma pausa para jogar direto pelo navegador.</p>
+                </header>
 
-            <div class="hero-role">
-                <span>Desenvolvedor</span>
-                <span class="dot"></span>
-                <span>Backend</span>
-                <span class="dot"></span>
-                <span>Frontend</span>
-            </div>
-
-            <div class="hero-cta">
-                <a class="btn btn-primary" href="#experiencias">
-                    <i class="fas fa-briefcase"></i>
-                    Ver experiências
-                </a>
-                <a class="btn btn-ghost" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf" target="_blank"
-                    rel="noopener">
-                    <i class="fas fa-download"></i>
-                    Download do CV
-                </a>
-            </div>
-
-            <div class="hero-social">
-                <a href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/" target="_blank" rel="noopener"
-                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/alexandrequintiliano95" target="_blank" rel="noopener" aria-label="GitHub"><i
-                        class="fab fa-github"></i></a>
-                <a href="#contact" aria-label="Contato"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-
-        <div class="scroll-hint" aria-hidden="true">
-            <div class="mouse"></div>
-            Role a página
-        </div>
-    </header>
-
-    <!-- Experiências-->
-    <section class="section" id="experiencias">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">Trajetória</span>
-                <h2>Experiências</h2>
-                <p>Formação e atuação profissional em desenvolvimento de sistemas. Clique em um card para ver os
-                    detalhes.</p>
-            </div>
-
-            <div class="card-grid">
-                <article class="card reveal" data-modal-open="modal-dettalles" tabindex="0" role="button">
-                    <div class="card-media logo">
-                        <img src="assets/img/portfolio/dettalles.jpeg" alt="Dettalles Consultoria" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
-                    </div>
-                    <div class="card-body">
-                        <h3>Dettalles Consultoria LTDA</h3>
-                        <p>Desenvolvimento Protheus/ADVPL, integrações financeiras e portal web Laravel.</p>
-                        <ul class="card-tags">
-                            <li>ADVPL</li>
-                            <li>Protheus</li>
-                            <li>Laravel</li>
-                            <li>Vue.js</li>
-                        </ul>
-                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
-
-                <article class="card reveal" data-modal-open="modal-preambulo" tabindex="0" role="button">
-                    <div class="card-media logo">
-                        <img src="assets/img/portfolio/preambulo.jpg" alt="Preâmbulo Tech" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
-                    </div>
-                    <div class="card-body">
-                        <h3>Preâmbulo Tech</h3>
-                        <p>Desenvolvedor de software backend, com foco em PHP, MySQL e sistemas legados.</p>
-                        <ul class="card-tags">
-                            <li>PHP</li>
-                            <li>MySQL</li>
-                            <li>Legado</li>
-                            <li>Integrações</li>
-                        </ul>
-                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
-
-                <article class="card reveal" data-modal-open="modal-a1" tabindex="0" role="button">
-                    <div class="card-media logo">
-                        <img src="assets/img/portfolio/a1.jpg" alt="A1 Engenharia" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
-                    </div>
-                    <div class="card-body">
-                        <h3>A1 Engenharia</h3>
-                        <p>Desenvolvimento web e ferramentas para engenharia.</p>
-                        <ul class="card-tags">
-                            <li>Django</li>
-                            <li>Flutter</li>
-                            <li>AutoCAD</li>
-                            <li>PHP</li>
-                        </ul>
-                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
-
-                <article class="card reveal" data-modal-open="modal-uninter" tabindex="0" role="button">
-                    <div class="card-media logo">
-                        <img src="assets/img/portfolio/uninter.jpg" alt="Faculdade Uninter" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-arrow-up-right-from-square"></i></span></div>
-                    </div>
-                    <div class="card-body">
-                        <h3>Faculdade Uninter</h3>
-                        <p>Análise e Desenvolvimento de Sistemas.</p>
-                        <ul class="card-tags">
-                            <li>Java</li>
-                            <li>Python</li>
-                            <li>React</li>
-                            <li>SQL</li>
-                        </ul>
-                        <span class="card-link">Ver detalhes <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Games-->
-    <section class="section" id="games">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">Diversão</span>
-                <h2>Games</h2>
-                <p>Uma pausa para jogar direto pelo navegador.</p>
-            </div>
-
-            <div class="card-grid games">
-                <article class="card reveal" data-modal-open="modal-volfied" tabindex="0" role="button">
-                    <div class="card-media">
-                        <img src="assets/img/portfolio/vorfield.jpg" alt="Volfied" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
-                    </div>
-                    <div class="card-body">
+                <div class="games">
+                    <article class="game" data-modal-open="modal-volfied" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="game-cover">
+                            <img src="assets/img/portfolio/vorfield.jpg" alt="" loading="lazy" />
+                        </div>
                         <h3>Volfied</h3>
-                        <p>Clique aqui para jogar Volfied</p>
-                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
+                        <p>Clássico de 1991 para MS-DOS.</p>
+                        <span class="game-play">Jogar<svg class="icon" aria-hidden="true">
+                                <use href="#i-arrow" />
+                            </svg></span>
+                    </article>
 
-                <article class="card reveal" data-modal-open="modal-sequencia" tabindex="0" role="button">
-                    <div class="card-media">
-                        <img src="assets/img/portfolio/sequencia.svg" alt="Jogo da sequência numérica" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
-                    </div>
-                    <div class="card-body">
+                    <article class="game" data-modal-open="modal-sequencia" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="game-cover">
+                            <img src="assets/img/portfolio/sequencia.svg" alt="" loading="lazy" />
+                        </div>
                         <h3>Sequência Numérica</h3>
-                        <p>Clique aqui para jogar o quebra-cabeça deslizante</p>
-                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
+                        <p>Quebra-cabeça deslizante em três tamanhos.</p>
+                        <span class="game-play">Jogar<svg class="icon" aria-hidden="true">
+                                <use href="#i-arrow" />
+                            </svg></span>
+                    </article>
 
-                <article class="card reveal" data-modal-open="modal-sudoku" tabindex="0" role="button">
-                    <div class="card-media">
-                        <img src="assets/img/portfolio/sudoku.svg" alt="Sudoku" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
-                    </div>
-                    <div class="card-body">
+                    <article class="game" data-modal-open="modal-sudoku" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="game-cover">
+                            <img src="assets/img/portfolio/sudoku.svg" alt="" loading="lazy" />
+                        </div>
                         <h3>Sudoku</h3>
-                        <p>Clique aqui para jogar Sudoku</p>
-                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </article>
+                        <p>Fácil, médio ou difícil.</p>
+                        <span class="game-play">Jogar<svg class="icon" aria-hidden="true">
+                                <use href="#i-arrow" />
+                            </svg></span>
+                    </article>
 
-                <article class="card reveal" data-modal-open="modal-flappy" tabindex="0" role="button">
-                    <div class="card-media">
-                        <img src="assets/img/portfolio/flappy.jpg" alt="Flappy Bird" loading="lazy" />
-                        <div class="card-play"><span><i class="fas fa-play"></i></span></div>
-                    </div>
-                    <div class="card-body">
+                    <article class="game" data-modal-open="modal-flappy" tabindex="0" role="button"
+                        aria-haspopup="dialog">
+                        <div class="game-cover">
+                            <img src="assets/img/portfolio/flappy.jpg" alt="" loading="lazy" />
+                        </div>
                         <h3>Flappy Bird</h3>
-                        <p>Clique aqui para jogar Flappy Bird</p>
-                        <span class="card-link">Jogar agora <i class="fas fa-arrow-right"></i></span>
+                        <p>Um clique para cada pulo.</p>
+                        <span class="game-play">Jogar<svg class="icon" aria-hidden="true">
+                                <use href="#i-arrow" />
+                            </svg></span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre-->
+        <section class="section" id="about">
+            <div class="container section-grid">
+                <header class="section-head">
+                    <h2>Sobre mim</h2>
+                    <p>Um pouco da minha história entre a administração e a tecnologia.</p>
+                </header>
+
+                <div>
+                    <div class="about">
+                        <div class="about-item">
+                            <h3>Formação</h3>
+                            <p>Sou o Alexandre! Em 2021 me graduei em
+                                Administração pela Faculdade Padre João Bagozzi, e foi de lá que trouxe algo que uso
+                                todos os dias no código: o hábito de olhar para o processo e entender o problema antes
+                                de propor a solução.</p>
+                        </div>
+
+                        <div class="about-item">
+                            <h3>Tecnologia</h3>
+                            <p>Hoje curso o último período de Análise e Desenvolvimento de Sistemas na Uninter, com
+                                conclusão prevista para 2026. Foi o caminho que escolhi para transformar curiosidade em
+                                prática: entender o que acontece por baixo do capô das aplicações e construir coisas que
+                                realmente funcionam no dia a dia de quem usa.</p>
+                        </div>
+
+                        <div class="about-item">
+                            <h3>Experiência</h3>
+                            <p>Entrei na A1 Engenharia como estagiário e fui efetivado. Desenvolvi aplicações web com
+                                Django (do banco de dados ao frontend), e criei ferramentas internas que automatizaram o
+                                trabalho da equipe de engenharia.</p>
+                        </div>
+
+                        <div class="about-item">
+                            <h3>Objetivos</h3>
+                            <p>Aprender sempre foi a parte que mais me motiva. A mistura entre administração e
+                                tecnologia me dá uma perspectiva diferente: consigo enxergar o negócio por trás do
+                                requisito, e não só a tarefa. Estou aberto a novos projetos e desafios que me façam
+                                crescer como desenvolvedor.</p>
+                        </div>
                     </div>
-                </article>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sobre-->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">Quem sou</span>
-                <h2>Sobre Mim</h2>
-                <p>Um pouco da minha história entre a administração e a tecnologia.</p>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-card reveal">
-                    <div class="about-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>Formação</h3>
-                    <p>Sou o Alexandre! Em 2021 me graduei em
-                        Administração pela Faculdade Padre João Bagozzi, e foi de lá que trouxe algo que uso todos os
-                        dias no código: o hábito de olhar para o processo e entender o problema antes de propor a
-                        solução.</p>
-                </div>
-
-                <div class="about-card reveal">
-                    <div class="about-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Tecnologia</h3>
-                    <p>Hoje curso o último período de Análise e Desenvolvimento de Sistemas na Uninter, com conclusão
-                        prevista para 2026. Foi o caminho que escolhi para transformar curiosidade em prática: entender
-                        o que acontece por baixo do capô das aplicações e construir coisas que realmente funcionam no
-                        dia a dia de quem usa.</p>
-                </div>
-
-                <div class="about-card reveal">
-                    <div class="about-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Experiência</h3>
-                    <p>Entrei na A1 Engenharia como estagiário e fui efetivado. Desenvolvi aplicações web com
-                        Django (do banco de dados ao frontend), e criei ferramentas internas que automatizaram o trabalho
-                        da equipe de engenharia.</p>
-                </div>
-
-                <div class="about-card reveal">
-                    <div class="about-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Objetivos</h3>
-                    <p>Aprender sempre foi a parte que mais me motiva. A mistura entre administração e tecnologia me dá
-                        uma perspectiva diferente: consigo enxergar o negócio por trás do requisito, e não só a tarefa.
-                        Estou aberto a novos projetos e desafios que me façam crescer como desenvolvedor.</p>
+                    <a class="btn btn-ghost about-cta" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf"
+                        target="_blank" rel="noopener">Baixar currículo (PDF)</a>
                 </div>
             </div>
+        </section>
 
-            <div class="about-cta reveal">
-                <a class="btn btn-primary" href="assets/img/Alexandre Quintiliano-Curriculum Vitae.pdf" target="_blank"
-                    rel="noopener">
-                    <i class="fas fa-download"></i>
-                    Download Curriculum Vitae
-                </a>
-            </div>
-        </div>
-    </section>
+        <!-- Contato-->
+        <section class="section" id="contact">
+            <div class="container section-grid">
+                <header class="section-head">
+                    <h2>Contato</h2>
+                    <p>Preencha o formulário e retorno assim que possível.</p>
+                    <ul class="link-list">
+                        <li><a class="link" href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/"
+                                target="_blank" rel="noopener">LinkedIn<svg class="icon" aria-hidden="true">
+                                    <use href="#i-out" />
+                                </svg></a></li>
+                        <li><a class="link" href="https://github.com/alexandrequintiliano95" target="_blank"
+                                rel="noopener">GitHub<svg class="icon" aria-hidden="true">
+                                    <use href="#i-out" />
+                                </svg></a></li>
+                    </ul>
+                </header>
 
-    <!-- Contato-->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">Vamos conversar</span>
-                <h2>Contato</h2>
-                <p>Preencha o formulário abaixo e retorno assim que possível.</p>
-            </div>
-
-            <div class="contact-wrap reveal">
-                <form id="contactForm" novalidate>
+                <form class="form" id="contactForm" novalidate>
                     <div class="form-row">
                         <div class="field">
-                            <input id="name" type="text" placeholder=" " autocomplete="name" required />
-                            <label for="name">Nome Completo</label>
+                            <label for="name">Nome completo</label>
+                            <input id="name" type="text" autocomplete="name" required />
                         </div>
                         <div class="field">
-                            <input id="email" type="email" placeholder=" " autocomplete="email" required />
                             <label for="email">Email</label>
+                            <input id="email" type="email" autocomplete="email" required />
                         </div>
                     </div>
                     <div class="field">
-                        <input id="phone" type="tel" placeholder=" " autocomplete="tel" />
-                        <label for="phone">Telefone</label>
+                        <label for="phone">Telefone <span>(opcional)</span></label>
+                        <input id="phone" type="tel" autocomplete="tel" />
                     </div>
                     <div class="field">
-                        <textarea id="message" placeholder=" " required></textarea>
                         <label for="message">Mensagem</label>
+                        <textarea id="message" required></textarea>
                     </div>
-                    <div class="form-submit">
-                        <button class="btn btn-primary" type="button" id="submitButton" onclick="sendEmail()">
-                            <i class="fas fa-paper-plane"></i>
-                            Enviar mensagem
-                        </button>
-                    </div>
+                    <button class="btn btn-primary" type="button" id="submitButton" onclick="sendEmail()">Enviar
+                        mensagem</button>
                 </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Rodapé-->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>Redes Sociais</h4>
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/" target="_blank"
-                            rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/alexandrequintiliano95" target="_blank" rel="noopener"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4>Navegação</h4>
-                    <ul class="footer-nav">
-                        <li><a href="#experiencias">Experiências</a></li>
-                        <li><a href="#games">Games</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4>Sobre o site</h4>
-                    <p class="mb-0">
-                        Desenvolvido por
-                        <a href="https://github.com/alexandrequintiliano95" target="_blank" rel="noopener">Alexandre
-                            Quintiliano</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="copyright">
-                <small>Copyright &copy; Alexandre Quintiliano</small>
-            </div>
+            <small>&copy; Alexandre Quintiliano</small>
+            <ul class="link-list">
+                <li><a class="link" href="https://www.linkedin.com/in/alexandre-quintiliano-561633152/"
+                        target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a class="link" href="https://github.com/alexandrequintiliano95" target="_blank"
+                        rel="noopener">GitHub</a></li>
+                <li><a class="link" href="#page-top">Voltar ao topo</a></li>
+            </ul>
         </div>
     </footer>
 
-    <!-- Modal — Uninter-->
+    <!-- Modal: Uninter-->
     <div class="modal" id="modal-uninter" role="dialog" aria-modal="true" aria-labelledby="modal-uninter-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Formação</span>
-            <h2 id="modal-uninter-title">Faculdade Uninter</h2>
-            <img class="modal-img" src="assets/img/portfolio/uninter.jpg" alt="Faculdade Uninter" />
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <img class="modal-logo" src="assets/img/portfolio/uninter.jpg" alt="" />
+                <div>
+                    <p class="modal-kind">Formação</p>
+                    <h2 id="modal-uninter-title">Faculdade Uninter</h2>
+                </div>
+            </header>
             <p>Cursando Análise e Desenvolvimento de Sistemas. A previsão de término é para Dezembro de 2026.</p>
             <p>No curso já tive contato com as seguintes tecnologias:</p>
             <ul class="tech-chips">
@@ -437,23 +414,27 @@
                 <li>Figma</li>
             </ul>
             <div class="modal-actions">
-                <button class="btn btn-ghost" type="button" data-modal-close>
-                    <i class="fas fa-xmark"></i>
-                    Fechar Janela
-                </button>
+                <button class="btn btn-ghost" type="button" data-modal-close>Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal — Preâmbulo Tech-->
+    <!-- Modal: Preâmbulo Tech-->
     <div class="modal" id="modal-preambulo" role="dialog" aria-modal="true" aria-labelledby="modal-preambulo-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Experiência profissional</span>
-            <h2 id="modal-preambulo-title">Preâmbulo Tech</h2>
-            <img class="modal-img" src="assets/img/portfolio/preambulo.jpg" alt="Preâmbulo Tech" />
-            <p>Desenvolvedor de software · Tempo integral · abr de 2025 a abr de 2026 (1 ano e 1 mês) — Curitiba,
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <img class="modal-logo" src="assets/img/portfolio/preambulo.jpg" alt="" />
+                <div>
+                    <p class="modal-kind">Experiência profissional</p>
+                    <h2 id="modal-preambulo-title">Preâmbulo Tech</h2>
+                </div>
+            </header>
+            <p>Desenvolvedor de software · Tempo integral · abr de 2025 a abr de 2026 (1 ano e 1 mês) · Curitiba,
                 Paraná, Brasil.</p>
             <div class="modal-columns">
                 <ul class="check-list">
@@ -475,22 +456,26 @@
                 </ul>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-ghost" type="button" data-modal-close>
-                    <i class="fas fa-xmark"></i>
-                    Fechar Janela
-                </button>
+                <button class="btn btn-ghost" type="button" data-modal-close>Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal — A1 Engenharia-->
+    <!-- Modal: A1 Engenharia-->
     <div class="modal" id="modal-a1" role="dialog" aria-modal="true" aria-labelledby="modal-a1-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Experiência profissional</span>
-            <h2 id="modal-a1-title">A1 Engenharia</h2>
-            <img class="modal-img" src="assets/img/portfolio/a1.jpg" alt="A1 Engenharia" />
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <img class="modal-logo" src="assets/img/portfolio/a1.jpg" alt="" />
+                <div>
+                    <p class="modal-kind">Experiência profissional</p>
+                    <h2 id="modal-a1-title">A1 Engenharia</h2>
+                </div>
+            </header>
             <p>A A1 ENGENHARIA é uma empresa provedora de soluções integradas para plantas industriais e geração de
                 energia, na qual pude contribuir nas seguintes tarefas:</p>
             <div class="modal-columns">
@@ -507,23 +492,27 @@
                 </ul>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-ghost" type="button" data-modal-close>
-                    <i class="fas fa-xmark"></i>
-                    Fechar Janela
-                </button>
+                <button class="btn btn-ghost" type="button" data-modal-close>Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal — Dettalles-->
+    <!-- Modal: Dettalles-->
     <div class="modal" id="modal-dettalles" role="dialog" aria-modal="true" aria-labelledby="modal-dettalles-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Experiência profissional</span>
-            <h2 id="modal-dettalles-title">Dettalles Consultoria LTDA</h2>
-            <img class="modal-img" src="assets/img/portfolio/dettalles.jpeg" alt="Dettalles Consultoria" />
-            <p>Desenvolvedor de Software · Tempo integral · Atualmente — Curitiba, Paraná, Brasil.</p>
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <img class="modal-logo" src="assets/img/portfolio/dettalles.jpeg" alt="" />
+                <div>
+                    <p class="modal-kind">Experiência profissional</p>
+                    <h2 id="modal-dettalles-title">Dettalles Consultoria LTDA</h2>
+                </div>
+            </header>
+            <p>Desenvolvedor de Software · Tempo integral · Atualmente · Curitiba, Paraná, Brasil.</p>
             <div class="modal-columns">
                 <ul class="check-list">
                     <li><strong>Desenvolvimento Protheus/ADVPL:</strong> manutenção e evolução de rotinas corporativas
@@ -543,7 +532,7 @@
                     <li><strong>Desenvolvimento Web:</strong> manutenção de portal Laravel com Vue.js, Inertia e
                         Vuetify, implementando melhorias em cadastro de clientes, permissões de gestores, filtros de
                         equipes, CRM, relatórios e regras por empresa/filial.</li>
-                    <li><strong>Integração Portal–ERP:</strong> rastreamento e correção de fluxos entre frontend,
+                    <li><strong>Integração Portal-ERP:</strong> rastreamento e correção de fluxos entre frontend,
                         backend Laravel e endpoints Protheus, garantindo consistência de tenant, filial, vendedor e
                         dados comerciais.</li>
                     <li><strong>Qualidade e Sustentação:</strong> diagnóstico de incidentes, aplicação de correções
@@ -552,21 +541,25 @@
                 </ul>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-ghost" type="button" data-modal-close>
-                    <i class="fas fa-xmark"></i>
-                    Fechar Janela
-                </button>
+                <button class="btn btn-ghost" type="button" data-modal-close>Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal — Volfied-->
+    <!-- Modal: Volfied-->
     <div class="modal" id="modal-volfied" role="dialog" aria-modal="true" aria-labelledby="modal-volfied-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Game</span>
-            <h2 id="modal-volfied-title">Volfied</h2>
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <div>
+                    <p class="modal-kind">Game</p>
+                    <h2 id="modal-volfied-title">Volfied</h2>
+                </div>
+            </header>
             <div class="embed">
                 <iframe data-src="https://archive.org/embed/msdos_Volfied_1991" title="Volfied"
                     allowfullscreen></iframe>
@@ -578,13 +571,20 @@
         </div>
     </div>
 
-    <!-- Modal — Sequência Numérica-->
+    <!-- Modal: Sequência Numérica-->
     <div class="modal" id="modal-sequencia" role="dialog" aria-modal="true" aria-labelledby="modal-sequencia-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Game</span>
-            <h2 id="modal-sequencia-title">Sequência Numérica</h2>
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <div>
+                    <p class="modal-kind">Game</p>
+                    <h2 id="modal-sequencia-title">Sequência Numérica</h2>
+                </div>
+            </header>
             <p>O tabuleiro começa embaralhado. Arraste as peças pelos espaços vazios até a sequência ficar na ordem
                 certa, da esquerda para a direita e de cima para baixo.</p>
 
@@ -598,39 +598,39 @@
                 <div class="puzzle-board" data-puzzle-board role="group" aria-label="Tabuleiro"></div>
 
                 <div class="puzzle-stats">
-                    <span><i class="fas fa-shoe-prints"></i><strong data-puzzle-moves>0</strong> <span
-                            data-puzzle-moves-label>movimentos</span></span>
-                    <span><i class="fas fa-stopwatch"></i><strong data-puzzle-time>00:00</strong></span>
+                    <span><strong data-puzzle-moves>0</strong> <span data-puzzle-moves-label>movimentos</span></span>
+                    <span>Tempo <strong data-puzzle-time>00:00</strong></span>
                     <span data-puzzle-best></span>
                 </div>
 
                 <p class="puzzle-status" data-puzzle-status role="status" aria-live="polite"></p>
 
-                <p class="puzzle-help">Arraste a peça na direção do espaço vazio — vale mouse ou dedo. Pelo teclado, as
-                    setas movem a peça no sentido escolhido; clique num espaço vazio para escolher qual deles as setas
-                    controlam.</p>
+                <p class="puzzle-help">Arraste a peça na direção do espaço vazio, com o mouse ou com o dedo. Pelo
+                    teclado, as setas movem a peça no sentido escolhido; clique num espaço vazio para escolher qual
+                    deles as setas controlam.</p>
             </div>
 
             <div class="modal-actions">
-                <button class="btn btn-primary" type="button" data-puzzle-shuffle>
-                    <i class="fas fa-shuffle"></i>
-                    Embaralhar
-                </button>
-                <button class="btn btn-ghost" type="button" data-modal-close>
-                    <i class="fas fa-xmark"></i>
-                    Fechar Janela
-                </button>
+                <button class="btn btn-primary" type="button" data-puzzle-shuffle>Embaralhar</button>
+                <button class="btn btn-ghost" type="button" data-modal-close>Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal — Sudoku-->
+    <!-- Modal: Sudoku-->
     <div class="modal" id="modal-sudoku" role="dialog" aria-modal="true" aria-labelledby="modal-sudoku-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Game</span>
-            <h2 id="modal-sudoku-title">Sudoku</h2>
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <div>
+                    <p class="modal-kind">Game</p>
+                    <h2 id="modal-sudoku-title">Sudoku</h2>
+                </div>
+            </header>
             <p>Complete o tabuleiro de forma que cada linha, cada coluna e cada quadrado de 3×3 tenham os números de 1 a
                 9 sem repetir.</p>
 
@@ -653,23 +653,21 @@
                     <button type="button" data-sudoku-number="7">7</button>
                     <button type="button" data-sudoku-number="8">8</button>
                     <button type="button" data-sudoku-number="9">9</button>
-                    <button type="button" data-sudoku-erase aria-label="Apagar"><i class="fas fa-eraser"></i></button>
+                    <button type="button" data-sudoku-erase aria-label="Apagar">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#i-erase" />
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="sudoku-tools">
-                    <button type="button" data-sudoku-notes aria-pressed="false">
-                        <i class="fas fa-pencil"></i>
-                        Anotações
-                    </button>
-                    <button type="button" data-sudoku-new>
-                        <i class="fas fa-rotate"></i>
-                        Novo jogo
-                    </button>
+                    <button type="button" data-sudoku-notes aria-pressed="false">Anotações</button>
+                    <button type="button" data-sudoku-new>Novo jogo</button>
                 </div>
 
                 <div class="puzzle-stats">
-                    <span><i class="fas fa-stopwatch"></i><strong data-sudoku-time>00:00</strong></span>
-                    <span><i class="fas fa-table-cells"></i><strong data-sudoku-left>81</strong> a preencher</span>
+                    <span>Tempo <strong data-sudoku-time>00:00</strong></span>
+                    <span><strong data-sudoku-left>81</strong> a preencher</span>
                     <span data-sudoku-best></span>
                 </div>
 
@@ -682,21 +680,25 @@
             </div>
 
             <div class="modal-actions">
-                <button class="btn btn-ghost" type="button" data-modal-close>
-                    <i class="fas fa-xmark"></i>
-                    Fechar Janela
-                </button>
+                <button class="btn btn-ghost" type="button" data-modal-close>Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal — Flappy Bird-->
+    <!-- Modal: Flappy Bird-->
     <div class="modal" id="modal-flappy" role="dialog" aria-modal="true" aria-labelledby="modal-flappy-title">
         <div class="modal-dialog">
-            <button class="modal-close" type="button" data-modal-close aria-label="Fechar"><i
-                    class="fas fa-xmark"></i></button>
-            <span class="modal-eyebrow">Game</span>
-            <h2 id="modal-flappy-title">Flappy Bird</h2>
+            <button class="modal-close" type="button" data-modal-close aria-label="Fechar">
+                <svg class="icon" aria-hidden="true">
+                    <use href="#i-close" />
+                </svg>
+            </button>
+            <header class="modal-head">
+                <div>
+                    <p class="modal-kind">Game</p>
+                    <h2 id="modal-flappy-title">Flappy Bird</h2>
+                </div>
+            </header>
             <div class="embed">
                 <iframe data-src="https://funhtml5games.com?embed=flappy" title="Flappy Bird" scrolling="no"
                     allowfullscreen></iframe>

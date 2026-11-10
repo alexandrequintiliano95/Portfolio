@@ -19,15 +19,13 @@ function getWeather(latitude, longitude) {
             const cityName = data.name;
             const temperature = Math.round(data.main.temp);
             const description = data.weather[0].description; // A descrição já está em português
-            const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-            weatherDiv.innerHTML = `
-                <img src="${icon}" alt="${description}" onerror="this.src='assets/img/portfolio/weather.png'" />
-                <div class="weather-text">
-                    <span class="weather-temp">${temperature} °C</span>
-                    <span class="weather-city">${cityName} · ${description}</span>
-                </div>
-            `;
+            // Texto simples na barra: "Curitiba 18 °C". A descrição fica na dica.
+            const temp = document.createElement('strong');
+            temp.textContent = `${temperature} °C`;
+            weatherDiv.replaceChildren(`${cityName} `, temp);
+            weatherDiv.title = `Clima na sua localização: ${description}`;
+            weatherDiv.hidden = false;
         })
         .catch(error => {
             console.error('Erro ao obter dados do clima:', error);
@@ -99,7 +97,7 @@ function sendEmail() {
     const originalHtml = button ? button.innerHTML : '';
     if (button) {
         button.disabled = true;
-        button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Enviando...';
+        button.textContent = 'Enviando...';
     }
 
     // Enviar o e-mail
@@ -134,22 +132,16 @@ function sendEmail() {
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
     const nav = document.getElementById('mainNav');
-    const progress = document.getElementById('scrollProgress');
     const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
     const sections = navLinks
         .map(link => document.querySelector(link.getAttribute('href')))
         .filter(Boolean);
 
-    /* --- Navbar, progresso e link ativo --- */
+    /* --- Navbar e link ativo --- */
     const onScroll = () => {
         const y = window.scrollY;
 
         if (nav) nav.classList.toggle('scrolled', y > 8);
-
-        if (progress) {
-            const max = document.documentElement.scrollHeight - window.innerHeight;
-            progress.style.width = `${max > 0 ? (y / max) * 100 : 0}%`;
-        }
 
         let current = '';
         sections.forEach(section => {
@@ -167,13 +159,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Tema claro / escuro --- */
     const themeToggle = document.getElementById('themeToggle');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    // A cor da barra do navegador acompanha o fundo de cada tema
+    const syncThemeMeta = () => {
+        if (!themeMeta) return;
+        themeMeta.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#faf7f5' : '#0d0708');
+    };
+    syncThemeMeta();
+
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
             root.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
-            const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', next === 'light' ? '#fbf6f6' : '#0f0708');
+            syncThemeMeta();
         });
     }
 
@@ -183,8 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const setMenu = open => {
         if (!mobileMenu || !navToggle) return;
         mobileMenu.classList.toggle('open', open);
+        // O ícone vira um X pelo CSS, a partir do aria-expanded
         navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+        navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
         document.body.classList.toggle('no-scroll', open);
     };
 
@@ -248,34 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.modal.open').forEach(closeModal);
         if (mobileMenu && mobileMenu.classList.contains('open')) setMenu(false);
     });
-
-    /* --- Animação de entrada --- */
-    const revealables = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                obs.unobserve(entry.target);
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-        revealables.forEach((element, index) => {
-            element.style.transitionDelay = `${(index % 4) * 90}ms`;
-            observer.observe(element);
-        });
-
-        // Rede de segurança: se por algum motivo o observer não disparar,
-        // o conteúdo aparece mesmo assim.
-        setTimeout(() => {
-            revealables.forEach(element => {
-                const box = element.getBoundingClientRect();
-                if (box.top < window.innerHeight) element.classList.add('visible');
-            });
-        }, 2500);
-    } else {
-        revealables.forEach(element => element.classList.add('visible'));
-    }
 });
 
 window.addEventListener('load', getLocation);

@@ -398,7 +398,7 @@
             if (!bestEl) return;
             const best = readBest();
             bestEl.innerHTML = best
-                ? `<i class="fas fa-trophy"></i> Melhor: ${formatTime(best.ms)}`
+                ? `Melhor: <strong>${formatTime(best.ms)}</strong>`
                 : '';
         }
 
