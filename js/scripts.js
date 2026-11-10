@@ -19,13 +19,15 @@ function getWeather(latitude, longitude) {
             const cityName = data.name;
             const temperature = Math.round(data.main.temp);
             const description = data.weather[0].description; // A descrição já está em português
+            const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-            // Texto simples na barra: "Curitiba 18 °C". A descrição fica na dica.
-            const temp = document.createElement('strong');
-            temp.textContent = `${temperature} °C`;
-            weatherDiv.replaceChildren(`${cityName} `, temp);
-            weatherDiv.title = `Clima na sua localização: ${description}`;
-            weatherDiv.hidden = false;
+            weatherDiv.innerHTML = `
+                <img src="${icon}" alt="${description}" onerror="this.src='assets/img/portfolio/weather.png'" />
+                <div class="weather-text">
+                    <span class="weather-temp">${temperature} °C</span>
+                    <span class="weather-city">${cityName} · ${description}</span>
+                </div>
+            `;
         })
         .catch(error => {
             console.error('Erro ao obter dados do clima:', error);

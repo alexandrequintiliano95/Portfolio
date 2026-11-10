@@ -365,18 +365,51 @@ ul {
     gap: var(--s-1);
 }
 
-/* Clima: texto simples, só aparece depois que os dados chegam */
-.weather {
-    margin: 0 var(--s-2) 0 var(--s-3);
-    font-size: 0.8125rem;
-    color: var(--text-dim);
-    white-space: nowrap;
+/* Clima: cápsula com ícone, temperatura e cidade */
+.weather-chip {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    max-width: 210px;
+    margin: 0 var(--s-1) 0 var(--s-3);
+    padding: var(--s-1) var(--s-3) var(--s-1) var(--s-1);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--text) 4%, transparent);
+    color: var(--text-muted);
+    line-height: 1.25;
+    transition: border-color var(--dur) ease;
+}
+
+.weather-chip:hover {
+    border-color: var(--border-strong);
+}
+
+.weather-chip img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex: none;
+}
+
+.weather-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    font-size: 0.6875rem;
+}
+
+.weather-temp {
+    font-weight: 600;
+    color: var(--text);
     font-variant-numeric: tabular-nums;
 }
 
-.weather strong {
-    color: var(--text);
-    font-weight: 600;
+.weather-city {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: capitalize;
 }
 
 .icon-btn {
@@ -1572,7 +1605,7 @@ body .swal2-styled.swal2-confirm:focus-visible {
         display: inline-grid;
     }
 
-    .weather {
+    .weather-chip {
         display: none;
     }
 
